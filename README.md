@@ -1,4 +1,4 @@
-# GitHub-PowerToys
+# Oh-My-GitHub
 
 > Make GitHub even better.
 
