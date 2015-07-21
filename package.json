@@ -1,0 +1,25 @@
+{
+  "name": "oh-my-github",
+  "homepage": "https://github.com/UserScript/Oh-My-GitHub",
+  "author": "cssmagic <cssmagic.cn@gmail.com>",
+  "description": "{Description of Sample}",
+  "license": "MIT",
+  "scripts": {
+    "start": "gulp watch",
+    "dist": "gulp",
+    "clean": "gulp clean",
+    "js": "gulp js",
+    "dev": "gulp dev",
+    "watch": "gulp watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "3.*",
+    "del": "1.*",
+    "gulp-concat": "2.*",
+    "gulp-wrap": "^0.11.0",
+    "gulp-replace": "^0.5.3",
+    "gulp-uglify": "1.*"
+  }
+}
