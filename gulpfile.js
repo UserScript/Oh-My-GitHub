@@ -15,9 +15,20 @@ var myPath = {
 }
 var fileList = [
 	'./src/meta.js',
+	'./bower_components/underscore/underscore-min.js',
+	'./bower_components/underscore-template/src/underscore-template.js',
+	'./src/lib/action.js',
 	'./src/core.js',
-	'./src/language.js',
+	'./src/util.js',
 	'./src/url.js',
+	'./src/module.js',
+	'./src/i18n.js',
+	'./src/config.js',
+	'./src/task.js',
+	'./src/css.js',
+	'./src/ui-entrance.js',
+	'./src/ui-setting-pane.js',
+	'./src/ui-setting-side-menu.js',
 	'./src/module/*.js',
 	'./src/init.js',
 ]
@@ -32,7 +43,7 @@ gulp.task('clean', function () {
 	del(path.join(myPath.dest, '*.*'))
 })
 
-gulp.task('watch', function () {
+gulp.task('watch', ['dev'], function () {
 	gulp.watch([path.join(myPath.src, '**/*.*')], ['dev'])
 })
 

@@ -21,3 +21,6 @@ quote_type = double
 
 [**.{js,css}]
 curly_bracket_next_line = false
+
+[**.md]
+trim_trailing_whitespace = false

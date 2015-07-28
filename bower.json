@@ -1,0 +1,36 @@
+{
+  "name": "oh-my-github",
+  "homepage": "https://github.com/UserScript/Oh-My-GitHub",
+  "authors": [
+    "cssmagic <cssmagic.cn@gmail.com>"
+  ],
+  "description": "[UserScript] Make GitHub even better.",
+  "main": "dist/oh-my-github.user.js",
+  "moduleType": [
+    "userscript"
+  ],
+  "keywords": [
+    "github"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "**.sh",
+    "package.json",
+    "node_modules",
+    "bower_components",
+    "gulpfile.js",
+    "test",
+    "doc",
+    "demo"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "action": "*",
+    "underscore-template": "0.2",
+    "underscore": "1.*",
+    "mocha.css": "0.1.0",
+    "mocha": "1.*",
+    "chai": "1.*"
+  }
+}

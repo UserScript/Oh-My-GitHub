@@ -21,4 +21,5 @@ npm-debug.log
 *.zip
 *.gz
 
-src/_debug/
+_debug/
+_github/
