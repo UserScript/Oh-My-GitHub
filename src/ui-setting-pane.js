@@ -16,19 +16,39 @@ void function () {
 			min-height: 400px;
 		}
 		/* tab */
-		.${clsTabContent} { display: none; margin: 20px 10px; }
+		.${clsTabContent} {
+			display: none;
+			margin: 30px 20px;
+		}
 		.${clsTabContent}.${clsTabContentSelected} { display: block; }
+
+		/* form */
+		.${clsTabContent} form {
+
+		}
+		.${clsTabContent} form div.act {
+			margin-top: 30px;
+		}
+		.${clsTabContent} form div.act .btn:first-child {
+			width: 80px;
+			text-align: center;
+		}
+
 		/* mod list */
 		ul#omg-mod-list {
 			/*margin-left: 1em;*/
 			list-style: none;
 		}
 		ul#omg-mod-list > li {
-			margin-bottom: 15px;
+			margin-bottom: 20px;
 		}
 		ul#omg-mod-list > li label b {
 			font-size: 14px;
 			cursor: pointer;
+			text-transform: capitalize;  /* temp */
+		}
+		ul#omg-mod-list > li div.descr {
+			margin-top: 5px;
 		}
 	`
 	var htmlPane = `
@@ -40,14 +60,20 @@ void function () {
 	var htmlTab = `
 		<div class="tabnav">
 			<nav class="tabnav-tabs">
-				<a class="tabnav-tab ${clsSelected}" href="#tab=mod" data-action="switch-tab">Modules</a>
+				<a class="tabnav-tab ${clsSelected}" href="#tab=mod" data-action="switch-tab">Modules and options</a>
 				<a class="tabnav-tab" href="#tab=about" data-action="switch-tab">About</a>
 			</nav>
 		</div>
 	`
 	var htmlTabContentMod = `
 		<div class="${clsTabContent} ${clsTabContentSelected}" data-tab-name="mod">
-			...
+			<!--<h4>Check to enable modules you want:</h4>-->
+			<form class="form-checkbox">
+				<div class="act">
+					<a role="button" class="btn btn-primary disabled" href="#omg-config-save" data-action>Save</a>
+					<!--<a role="button" class="btn" href="#omg-config-cancel" data-action>Cancel</a>-->
+				</div>
+			</form>
 		</div>
 	`
 	var htmlTabContentAbout = `
@@ -70,11 +96,11 @@ void function () {
 		</div>
 	`
 	var tmplModList = `
-		<ul id="omg-mod-list" class="form-checkbox">
+		<ul id="omg-mod-list">
 			<% _.each(data, function (mod) { %>
 			<li>
 				<label>
-					<input name="<%= mod.name %>" type="checkbox" value="1" checked disabled>
+					<input name="<%= mod.name %>" type="checkbox" value="1" disabled>
 					<b><%= mod.name %></b>
 				</label>
 				<div class="descr">
@@ -114,12 +140,16 @@ void function () {
 
 	// fn
 	var mod = {
+		//isReady: false,
 		init: function () {
+			//if (this.isReady) return
+			//this.isReady = true
 			this._getElem()
-			//this._bind()
-			this.initPane()
-			this.initModList()
-			this.showSettingCol()
+			this._initPane()
+			this._initModList()
+			this._bind()
+			this.applyConfig()
+			this._showSettingCol()
 		},
 		_getElem: function () {
 			this.$settingCol = $(selSettingMainCol)
@@ -127,31 +157,73 @@ void function () {
 			this.$settingPaneInner = this.$settingPane.children('.' + clsPaneInner)
 			this.$tab = $(htmlTab)
 			this.$tabContentMod = $(htmlTabContentMod)
+			this.$formConfig = this.$tabContentMod.children('form')
+			//this.$modList = this.$formConfig.children('ul')
 		},
-		//_bind: function () {
-		//	//var _ns = this
-		//	//this.$btn.on('click', function (ev) {
-		//	//	ev.preventDefault()
-		//	//
-		//	//})
-		//},
-		initPane: function () {
+		_bind: function () {
+			var _ns = this
+			action.add({
+				'omg-config-save': function () {
+					_ns.configSave()
+				},
+				//'omg-config-cancel': function () {
+				//	_ns.configCancel()
+				//},
+			})
+			this.$formConfig.on('submit', function (ev) {
+				ev.preventDefault()
+				_ns.configSave()
+			})
+		},
+		_initPane: function () {
 			this.$settingCol.empty().append(this.$settingPane)
 			this.$settingPaneInner.append(this.$tab)
 			this.$settingPaneInner.append(htmlTabContentAbout).append(this.$tabContentMod)
 		},
-		initModList: function () {
-			var extModules = _.filter(modules, function (mod) {
-				return !mod.internal
-			})
+		_initModList: function () {
+			var extModules = app.modules
 			template.add('mod-list', tmplModList)
 			var html = template.render('mod-list', extModules)
-			this.$tabContentMod.empty().append(html)
-			//console.log(extMods)
+			this.$formConfig.prepend(html)
 		},
-		showSettingCol: function () {
+		_showSettingCol: function () {
 			this.$settingCol.css('visibility', 'visible')
+			this.$formConfig.find('a.btn').removeClass('disabled')
+			this.$formConfig.find('input[type=checkbox]').prop('disabled', false)
 		},
+		applyConfig: function () {
+			var config = app.readConfig()
+			//console.log(config)
+			var cfgModules = config.modules || {}
+			//var cfgModOpts = config.modOptions || {}
+			if (_.isObject(cfgModules)) {
+				_.each(cfgModules, function (value, modName) {
+					var $input = $(`input[name="${modName}"]`).prop('disabled', false)
+					if (parseInt(value, 10)) $input.prop('checked', true)
+				})
+			}
+		},
+
+		configSave: function () {
+			var data = this.$formConfig.serializeArray()
+			// transform data
+			// [{name: 'mod_name', value: 1}, {...}] ----> {'mod_name': 1, ...}
+			var config = app.readConfig()
+			var modules = {}
+			_.each(data, function (item) {
+				if (parseInt(item.value, 10) === 1 && item.name) {
+					modules[item.name] = 1
+				}
+			})
+			config.modules = modules
+			//console.log(config)
+			app.writeConfig(config)
+			alert('\nConfig saved!\n\nRefreshing...')
+			location.reload()
+		},
+		//configCancel: function () {
+		//	location.reload()
+		//},
 	}
 
 	defineModule({

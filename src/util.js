@@ -60,6 +60,13 @@ void function () {
 			return $(item).length
 		})
 	}
+	function matchConfig(mod) {
+		if (mod.internal) return true
+		var modName = mod.name
+		var config = app.readConfig()
+		var cfgModules = config.modules
+		return !!cfgModules[modName]
+	}
 	function matchUrl(rules) {
 		if (!_.isArray(rules)) return true
 		if (!rules.length) return true
@@ -95,6 +102,7 @@ void function () {
 	app.util.match = {
 		url: matchUrl,
 		dom: matchDom,
+		config: matchConfig,
 	}
 
 

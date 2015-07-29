@@ -2,6 +2,7 @@
 app.init = function () {
 	app.getUrlType()
 	app.getEnvInfo()
+	app.getModList()
 	app.insertCSS()
 	app.runTask(app.EVENT_START)
 }
@@ -19,7 +20,7 @@ app.refresh = function () {
 
 
 // exports for debug
-app.modules = modules
+app.allModules = allModules
 unsafeWindow.OMG = app
 
 // debug

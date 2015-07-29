@@ -10,9 +10,11 @@ app.insertCSS = function () {
 	}
 
 	var cssTextList = []
-	_.each(modules, function (mod) {
+	_.each(allModules, function (mod) {
+		if (!('css' in mod)) return
+		var isConfigOK = app.util.match.config(mod)
 		var isUrlOK = app.util.match.url(mod.urlTypeMatches)
-		if (isUrlOK && 'css' in mod) {
+		if (isConfigOK && isUrlOK) {
 			cssTextList.push('/* ' + mod.name + ' */')
 			cssTextList.push(mod.css)
 		}

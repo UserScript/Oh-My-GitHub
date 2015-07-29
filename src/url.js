@@ -120,6 +120,11 @@ app.getUrlType = function () {
 				}
 				pathType = matchedSystemPathSegment
 			} else {
+				if (/^\/[\w\-]+\/?$/.test(path)) {
+					pathType = 'user'
+				} else if (/^\/[\w\-]+\/\w+\/?$/.test(path)) {
+					pathType = 'user/repo'
+				}
 
 
 
@@ -132,6 +137,14 @@ app.getUrlType = function () {
 				if (key === 'oh-my-github') {
 					pathType = 'setting/omg'
 				}
+			} else if (pathType === 'user') {
+				var tab = app.util.url.getParam('tab')
+				var map = {
+					'repositories': 'repo',
+					'activity': 'act',
+				}
+				tab = map[tab]
+				if (tab) pathType = [pathType, tab].join('/')
 			}
 
 		}
@@ -144,6 +157,7 @@ app.getUrlType = function () {
 	app.site = site
 	app.urlType = site + '/' + pathType
 
+	// debug
 	console.log('[OMG] url: ' + location.href)
 	console.log('[OMG] url type: ' + app.urlType)
 
@@ -158,7 +172,13 @@ app.getUrlTypeMore = function () {
 }
 
 app.getEnvInfo = function () {
+	var type = app.urlType
+	if (type === 'github/user') {
+		app.username = location.pathname.slice(1).toLowerCase()
+	}
 
+	// debug
+	console.log('[OMG] username: ' + (app.username || '(unknown)'))
 }
 app.getEnvInfoMore = function () {
 	// 'body.logged_in'

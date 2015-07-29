@@ -36,6 +36,7 @@ app.EVENT_START = 'documentStart'
 app.EVENT_END = 'documentEnd'
 app.EVENT_IDLE = 'documentIdle'
 app.OMG = 'Oh-My-GitHub'
+app.LS_KEY = 'omg_config'
 app.LINK_SETTING = '/settings/applications?name=oh-my-github'
 
 // bind

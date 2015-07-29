@@ -1,5 +1,5 @@
 
-var modules = {}
+var allModules = []
 
 app.defineModule = function (mod) {
 	var modName = mod.name
@@ -7,13 +7,19 @@ app.defineModule = function (mod) {
 	console.log('[OMG] def mod: `' + modName + '`')
 
 	// index
-	modules[modName] = mod
+	allModules.push(mod)
 
 	// language package
-	if ('i18n' in mod) {
-		app.indexI18n(modName)
-	}
+	//if ('i18n' in mod) {
+	//	app.indexI18n(modName)
+	//}
 
+}
+
+app.getModList = function () {
+	app.modules = _.filter(allModules, function (mod) {
+		return !mod.internal
+	})
 }
 
 // shortcut for module dev

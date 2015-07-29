@@ -5,8 +5,10 @@ app.i18n = {
 }
 app.lang = ''
 
+// TODO 语言机制需要再想想，重点是如何提供 API 给模块
 app.indexI18n = function (modName) {
-	var module = modules[modName]
+	// TODO allModules 的结构有变化，以下代码需要改写
+	var module = allModules[modName]
 	var i18n = module.i18n
 	var db = app.i18n
 	var languages = Object.keys(i18n)
