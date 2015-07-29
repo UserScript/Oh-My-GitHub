@@ -23,7 +23,24 @@ void function () {
 		}
 		return _cacheParam[s.toLowerCase()]
 	}
-
+	function appendParam(url, param) {
+		var s = ''
+		url = _.isString(url) ? url : ''
+		//url = _.url.removeHashFromUrl(url)
+		if ($.isPlainObject(param)) {
+			param = $.param(param)
+		} else if (_.isString(param)) {
+			// fix param string
+			if (param.startsWith('&') || param.startsWith('?')) {
+				param = param.slice(1)
+			}
+		} else {
+			param = null
+		}
+		// append
+		s = param ? url + (url.contains('?') ? '&' : '?') + param : s
+		return s || false
+	}
 	function parseQuery(query) {
 		var data = {}
 		if (query && _.isString(query)) {
@@ -43,6 +60,7 @@ void function () {
 	// exports
 	app.util.url = {
 		getParam: getParam,
+		appendParam: appendParam,
 		parseQuery: parseQuery,
 	}
 

@@ -25,6 +25,8 @@
 'github/repo/pr'			https://github.com/cssmagic/action/pulls
 'github/repo/pr/closed'			https://github.com/cssmagic/action/pulls?q=is%3Apr+is%3Aclosed
 'github/repo/pr/detail'		https://github.com/cssmagic/action/pulls/22
+'github/repo/pr/commit'		https://github.com/cssmagic/action/pulls/22/commits
+'github/repo/pr/diff'		https://github.com/cssmagic/action/pulls/22/files
 'github/repo/wiki'				https://github.com/stylus/stylus/wiki
 'github/repo/wiki/detail'		https://github.com/stylus/stylus/wiki/1.0.0
 'github/repo/wiki/detail/edit'	https://github.com/stylus/stylus/wiki/1.0.0/_edit
@@ -122,10 +124,11 @@ app.getUrlType = function () {
 			} else {
 				if (/^\/[\w\-]+\/?$/.test(path)) {
 					pathType = 'user'
-				} else if (/^\/[\w\-]+\/\w+\/?$/.test(path)) {
+				} else if (/^\/[\w\-]+\/[\w\-]+\/?$/.test(path)) {
 					pathType = 'user/repo'
+				} else if (/^\/[\w\-]+\/[\w\-]+\/pull\/\d+\/files?$/.test(path)) {
+					pathType = 'repo/pr/diff'
 				}
-
 
 
 

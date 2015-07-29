@@ -78,13 +78,27 @@ void function () {
 	`
 	var htmlTabContentAbout = `
 		<div class="${clsTabContent}" data-tab-name="about">
+			<h3 style="font-size: 14px; font-weight: 400;">
+				<strong style="font-size: 16px;">${app.OMG}</strong>
+				<span style="margin-left: 1em;">v0.1.0</span>
+				<a class="right" href="https://github.com/UserScript/Oh-My-GitHub" target="_blank">
+					<span class="octicon octicon-mark-github" style="margin-right: 3px;"></span>View on GitHub
+				</a>
+			</h3>
+			<hr class="bleed-flush">
 			<h4>Author</h4>
 			<p class="form-checkbox"><a href="/cssmagic" target="_blank"><b>@cssmagic</b></a> - Designer and developer.</p>
-			<h4>Open source libraries</h4>
-			<ul class="form-checkbox" style="margin-left: 1em;">
-				<li>jQuery</li>
-				<li>Underscore</li>
-				<li>Action</li>
+			<h4>Credits</h4>
+			<p class="form-checkbox">Open source projects:</p>
+			<ul style="margin-left: 3em; margin-top: -10px;">
+				<li><a href="https://github.com/jquery/jquery" target="_blank">jQuery</a></li>
+				<li><a href="https://github.com/jashkenas/underscore" target="_blank">Underscore</a></li>
+				<li><a href="https://github.com/cssmagic/action" target="_blank">Action</a></li>
+				<li><a href="https://github.com/cssmagic/underscore-template" target="_blank">Underscore-template</a></li>
+			</ul>
+			<p class="form-checkbox">Icons and images:</p>
+			<ul style="margin-left: 3em; margin-top: -10px;">
+				<li><a href="https://octicons.github.com/" target="_blank">Octicons</a></li>
 			</ul>
 			<h4>License</h4>
 			<p class="form-checkbox">MIT.</p>
