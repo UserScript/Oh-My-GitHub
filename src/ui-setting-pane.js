@@ -24,7 +24,7 @@ void function () {
 			list-style: none;
 		}
 		ul#omg-mod-list > li {
-			margin-bottom: 10px;
+			margin-bottom: 15px;
 		}
 		ul#omg-mod-list > li label b {
 			font-size: 14px;

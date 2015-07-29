@@ -12,6 +12,7 @@ app.refresh = function () {
 	app.getUrlTypeMore()
 	app.getEnvInfoMore()
 	app.insertCSS()
+	app.runTask(app.EVENT_START)
 	app.runTask(app.EVENT_END)
 	app.runTask(app.EVENT_IDLE)
 }

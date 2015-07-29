@@ -5,7 +5,7 @@ void function () {
 		/*a {color: red !important}*/
 	`
 	defineModule({
-		name: 'sample-module',
+		name: '(sample-module)',
 		description: 'Sample module which can be used as a template.',
 		category: 'issue',
 		urlTypeMatches: [
@@ -19,10 +19,10 @@ void function () {
 		],
 
 		// TODO 选项系统还没想好
-		options: [],
+		//options: [],
 
 		// style
-		css: css,
+		//css: css,
 
 		// init entrance
 		/* var env = {
@@ -31,24 +31,11 @@ void function () {
 			repo: app.repo,
 			repoOwner: app.repoOwner,
 		} */
-		//documentEnd: function (env) {
-		//	console.log('end')
-		//},
-		//documentIdle: function (env) {
-		//	console.log('loaded')
-		//
-		//},
-
-		// msg
-		i18n: {
-			en: {
-				module_name: 'Sample Module 1',
-				module_description: 'More words to explain what this module dose...',
-			},
-			zh: {
-				module_name: '示例模块',
-				module_description: '这里可以写更多的文字来解释这个模块可以做什么……',
-			},
+		documentEnd: function (env) {
+			console.log('end')
+		},
+		documentIdle: function (env) {
+			console.log('idle')
 		},
 	})
 

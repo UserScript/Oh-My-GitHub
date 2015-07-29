@@ -12,7 +12,7 @@ if (typeof String.prototype.contains !== 'function') {
 
 // shortcut
 var $ = function () {
-	console.error('[Oh-My-GitHub] jQuery is not ready while `documentStart`.')
+	console.error('[Oh-My-GitHub] jQuery is not available while `documentStart`.')
 	// never mind, we'll get jQuery later.
 }
 var $doc = null

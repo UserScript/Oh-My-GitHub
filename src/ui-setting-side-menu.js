@@ -7,7 +7,7 @@ void function () {
 	var clsNavItemOmg = 'menu-item-omg'
 
 	var css = `
-		nav.${clsNav} span.org-avatar {
+		nav.${clsNav} a.${clsNavItemOmg} span.org-avatar {
 			line-height: 18px;
 			width: 20px;
 		}
