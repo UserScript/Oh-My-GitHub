@@ -69,7 +69,9 @@ void function () {
 
 	defineModule({
 		name: 'free-header-nav-avatar',
-		description: 'To reorganize avatar in header nav.',
+		description: 'It reorganizes avatar in header nav.',
+		homepage: 'http://www.cssmagic.net/',
+		category: 'ui',
 		domMatches: [
 			selHeaderNavAvatar,
 		],
@@ -81,16 +83,6 @@ void function () {
 		documentEnd: function () {
 			mod.init()
 		},
-
-		// msg
-		i18n: {
-			en: {
-				module_name: 'Sample Module',
-			},
-			zh: {
-				module_name: '示例模块',
-			},
-		}
 	})
 
 }()

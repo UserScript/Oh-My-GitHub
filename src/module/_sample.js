@@ -1,12 +1,10 @@
 void function () {
 	'use strict'
 
-	var css = `
-		/*a {color: red !important}*/
-	`
 	defineModule({
 		name: '(sample-module)',
 		description: 'Sample module which can be used as a template.',
+		homepage: 'http://www.cssmagic.net/',
 		category: 'issue',
 		urlTypeMatches: [
 			//'github/*',
@@ -17,9 +15,6 @@ void function () {
 			//'#sample > ul',
 			//'header .new .alert-box',
 		],
-
-		// TODO 选项系统还没想好
-		//options: [],
 
 		// style
 		//css: css,
