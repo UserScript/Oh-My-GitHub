@@ -195,6 +195,7 @@ void function () {
 			this.$settingPaneInner.append(htmlTabContentAbout).append(this.$tabContentMod)
 		},
 		_initModList: function () {
+			if (app.util.env.isFirefox) return
 			var extModules = app.modules
 			template.add('mod-list', tmplModList)
 			var html = template.render('mod-list', extModules)

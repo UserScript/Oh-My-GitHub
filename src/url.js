@@ -5,10 +5,10 @@
 'github/setting/app'	https://github.com/settings/applications
 'github/setting/omg'	https://github.com/settings/applications?name=oh-my-github
 
-'github/my/watch'		https://github.com/watching
-'github/my/pr'			https://github.com/pulls
-'github/my/issue'		https://github.com/issues
-'github/my/fav'			https://github.com/stars
+'github/me/watch'		https://github.com/watching
+'github/me/pr'			https://github.com/pulls
+'github/me/issue'		https://github.com/issues
+'github/me/fav'			https://github.com/stars
 'github/user'			https://github.com/cssmagic
 'github/user/repo'			https://github.com/cssmagic?tab=repositories
 'github/user/act'			https://github.com/cssmagic?tab=activity
@@ -22,6 +22,7 @@
 							https://github.com/baixing/jedi/commit/master
 'github/repo/issue'			https://github.com/UserScript/Oh-My-GitHub/issues
 'github/repo/issue/detail'	https://github.com/UserScript/Oh-My-GitHub/issues/11
+'github/repo/issue/new'		https://github.com/UserScript/Oh-My-GitHub/issues/new
 'github/repo/pr'			https://github.com/cssmagic/action/pulls
 'github/repo/pr/closed'			https://github.com/cssmagic/action/pulls?q=is%3Apr+is%3Aclosed
 'github/repo/pr/detail'		https://github.com/cssmagic/action/pulls/22
@@ -36,7 +37,7 @@
 'github/org/...'			...
 
 'github/me'
-'github/my/repo'
+'github/me/repo'
 */
 
 /*
@@ -50,7 +51,7 @@
 'gist/detail/edit'
 
 'gist/me'
-'gist/my/fav'
+'gist/me/fav'
 */
 
 
@@ -126,6 +127,12 @@ app.getUrlType = function () {
 					pathType = 'user'
 				} else if (/^\/[\w\-]+\/[\w\-]+\/?$/.test(path)) {
 					pathType = 'user/repo'
+				} else if (/^\/[\w\-]+\/[\w\-]+\/issues\/?(?:\?.+)?$/.test(path)) {
+					pathType = 'repo/issue'
+				} else if (/^\/[\w\-]+\/[\w\-]+\/issues\/\d+\/?$/.test(path)) {
+					pathType = 'repo/issue/detail'
+				} else if (/^\/[\w\-]+\/[\w\-]+\/issues\/new\/?$/.test(path)) {
+					pathType = 'repo/issue/new'
 				} else if (/^\/[\w\-]+\/[\w\-]+\/pull\/\d+\/files?$/.test(path)) {
 					pathType = 'repo/pr/diff'
 				}

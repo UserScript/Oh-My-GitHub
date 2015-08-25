@@ -2,7 +2,7 @@
   "name": "oh-my-github",
   "homepage": "https://github.com/UserScript/Oh-My-GitHub",
   "author": "cssmagic <cssmagic.cn@gmail.com>",
-  "description": "{Description of Sample}",
+  "description": "[UserScript] Make GitHub even better.",
   "license": "MIT",
   "scripts": {
     "start": "gulp watch",

@@ -82,8 +82,9 @@ void function () {
 		if (mod.internal) return true
 		var modName = mod.name
 		var config = app.readConfig()
-		var cfgModules = config.modules
-		return !!cfgModules[modName]
+		var cfgModules = config.modules || {}
+		var result = modName in cfgModules
+		return result
 	}
 	function matchUrl(rules) {
 		if (!_.isArray(rules)) return true
@@ -124,4 +125,15 @@ void function () {
 	}
 
 
+}()
+
+
+void function () {
+	'use strict'
+	var isFirefox = 'mozPaintCount' in unsafeWindow || 'mozContact' in unsafeWindow
+
+	// exports
+	app.util.env = {
+		isFirefox: isFirefox,
+	}
 }()

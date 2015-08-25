@@ -5,8 +5,8 @@ app.insertCSS = function () {
 	var elem = app.styleElem
 	if (!elem) {
 		elem = app.styleElem = document.createElement('style')
-		elem.id = 'omg-css'
-		document.head.appendChild(elem);
+		elem.id = 'userscript-css'
+		document.head.appendChild(elem)
 	}
 
 	var cssTextList = []
@@ -20,7 +20,7 @@ app.insertCSS = function () {
 		}
 	})
 
-	elem.innerHTML = cssTextList.join('\n');
+	elem.innerHTML = cssTextList.join('\n')
 	console.log('[OMG] css updated.')
 
 }
