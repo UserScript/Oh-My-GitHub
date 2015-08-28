@@ -58,9 +58,9 @@ gulp.task('js', function() {
 		.pipe(concat(fileName))
 		.pipe(replace(/\/\*\* DEBUG_INFO_START \*\*\//g, '/*'))
 		.pipe(replace(/\/\*\* DEBUG_INFO_END \*\*\//g, '*/'))
-		.pipe(uglify({
-			preserveComments: 'some'
-		}))
+		//.pipe(uglify({
+		//	preserveComments: 'some'
+		//}))
 		//.pipe(wrap({src: path.join(myPath.src, '_wrapper/userscript.ejs')}))
 		.pipe(gulp.dest(myPath.dest))
 })

@@ -53,7 +53,7 @@ void function () {
 	`
 	var htmlPane = `
 		<div class="boxed-group">
-			<h3>${app.OMG}</h3>
+			<h3>${app.NAME}</h3>
 			<div class="${clsPaneInner}"></div>
 		</div>
 	`
@@ -79,7 +79,7 @@ void function () {
 	var htmlTabContentAbout = `
 		<div class="${clsTabContent}" data-tab-name="about">
 			<h3 style="font-size: 14px; font-weight: 400;">
-				<strong style="font-size: 16px;">${app.OMG}</strong>
+				<strong style="font-size: 16px;">${app.NAME}</strong>
 				<span style="margin-left: 1em;">v0.1.0</span>
 				<a class="right" href="https://github.com/UserScript/Oh-My-GitHub" target="_blank">
 					<span class="octicon octicon-mark-github" style="margin-right: 3px;"></span>View on GitHub
@@ -257,7 +257,7 @@ void function () {
 
 		// init entrance
 		documentStart: function () {
-			document.title = app.OMG + ' settings'
+			document.title = app.NAME + ' settings'
 		},
 		documentEnd: function () {
 			tab.init()

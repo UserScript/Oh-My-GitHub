@@ -35,9 +35,9 @@ _.extend(_.templateSettings, {
 app.EVENT_START = 'documentStart'
 app.EVENT_END = 'documentEnd'
 app.EVENT_IDLE = 'documentIdle'
-app.OMG = 'Oh-My-GitHub'
+app.NAME = 'Oh-My-GitHub'
 app.LS_KEY = 'omg_config'
-app.LINK_SETTING = '/settings/applications?name=oh-my-github'
+app.LINK_SETTING = '/settings/applications?x=oh-my-github'
 
 // bind
 document.addEventListener('DOMContentLoaded', function () {

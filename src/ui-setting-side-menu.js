@@ -18,7 +18,7 @@ void function () {
 			<h3 class="menu-heading">Extensions</h3>
 			<a href="${app.LINK_SETTING}" class="menu-item ${clsNavItemOmg}">
 				<span class="octicon octicon-gear org-avatar"></span>
-				<span class="org-settings-link">${app.OMG}</span>
+				<span class="org-settings-link">${app.NAME}</span>
 			</a>
 		</nav>
 	`

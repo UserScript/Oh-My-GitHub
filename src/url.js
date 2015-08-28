@@ -3,7 +3,7 @@
 'github/home'
 'github/setting/...'
 'github/setting/app'	https://github.com/settings/applications
-'github/setting/omg'	https://github.com/settings/applications?name=oh-my-github
+'github/setting/omg'	https://github.com/settings/applications?x=oh-my-github
 
 'github/me/watch'		https://github.com/watching
 'github/me/pr'			https://github.com/pulls
@@ -143,7 +143,7 @@ app.getUrlType = function () {
 
 			// special page
 			if (pathType === 'setting/app') {
-				var key = app.util.url.getParam('name')
+				var key = app.util.url.getParam('x')
 				if (key === 'oh-my-github') {
 					pathType = 'setting/omg'
 				}

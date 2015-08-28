@@ -11,7 +11,7 @@ void function () {
 	`
 	var htmlOmgNavItem = `
 		<li class="${clsNavItem} ${clsNavItemSeparator}">
-			<a class="header-nav-link tooltipped tooltipped-s" href="${app.LINK_SETTING}" aria-label="Config ${app.OMG}…">
+			<a class="header-nav-link tooltipped tooltipped-s" href="${app.LINK_SETTING}" aria-label="Config ${app.NAME}…">
 				<span class="octicon octicon-gear"></span>
 			</a>
 		</li>
