@@ -1,7 +1,7 @@
 void function () {
 	'use strict'
 
-	var selSettingMainCol = '#site-container div.columns div.column.three-fourths'
+	var selSettingMainCol = '.page-content div.columns div.column.three-fourths'
 	var clsPaneInner = 'boxed-group-inner'
 	var selSettingPaneInner = selSettingMainCol + ' > .boxed-group > .' + clsPaneInner
 	var clsTabContent = 'tab-content'

@@ -1,7 +1,7 @@
 void function () {
 	'use strict'
 
-	var selSettingSideCol = '#site-container div.columns div.column.one-fourth'
+	var selSettingSideCol = '.page-content div.columns div.column.one-fourth'
 	var clsSelected = 'selected'
 	var clsNav = 'menu-extensions'
 	var clsNavItemOmg = 'menu-item-omg'
