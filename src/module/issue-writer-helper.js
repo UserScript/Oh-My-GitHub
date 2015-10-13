@@ -92,7 +92,8 @@ void function () {
 			var title = ''
 
 			// normal headline in markdown
-			var reHeadline = /^#{1,6}\s*(.+)$/
+			// only search h1, to reduce misjudging
+			var reHeadline = /^#\s*([^#].*)$/
 			var guessMarkdownTitle = reHeadline.exec(firstLine)
 			if (guessMarkdownTitle) {
 				title = guessMarkdownTitle[1]
