@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            Oh-My-GitHub
-// @version         0.1.0
+// @version         0.1.1
 // @author          cssmagic
 // @namespace       https://github.com/UserScript
 // @homepage        https://github.com/UserScript/Oh-My-GitHub
