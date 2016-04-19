@@ -49,7 +49,7 @@ gulp.task('watch', ['dev'], function () {
 
 gulp.task('dev', function () {
 	gulp.src(fileList)
-		.pipe(concat(fileName))
+		.pipe(concat('dev.js'))
 		.pipe(gulp.dest(myPath.debug))
 })
 
