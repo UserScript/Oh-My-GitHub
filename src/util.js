@@ -38,7 +38,7 @@ void function () {
 			param = null
 		}
 		// append
-		s = param ? url + (url.contains('?') ? '&' : '?') + param : s
+		s = param ? url + (url.includes('?') ? '&' : '?') + param : s
 		return s || false
 	}
 	function parseQuery(query) {
@@ -97,7 +97,7 @@ void function () {
 			//console.log(rule)
 			if (app.urlType === rule) {
 				result = true
-			} else if (rule.contains('*')) {
+			} else if (rule.includes('*')) {
 				//alert('*')
 				var segments = rule.split('/')
 				//console.log(segments)

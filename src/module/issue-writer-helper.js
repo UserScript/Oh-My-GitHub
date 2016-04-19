@@ -16,9 +16,9 @@ void function () {
 		},
 		_getActionType: function (urlType) {
 			this.actionType = ''
-			if (urlType.contains('issue/new')) {
+			if (urlType.includes('issue/new')) {
 				this.actionType = 'new'
-			} else if (urlType.contains('issue/detail')) {
+			} else if (urlType.includes('issue/detail')) {
 				this.actionType = 'edit'
 			}
 		},
